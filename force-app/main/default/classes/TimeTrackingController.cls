@@ -19,13 +19,5 @@ public with sharing class TimeTrackingController {
     public static List<cm_bm__Project_Team_Member__c> getProjectTeamMember(String projectId) {
         return [SELECT Id, Name,cm_bm__Project__r.Name from cm_bm__Project_Team_Member__c where cm_bm__Project__r.id = :projectId];
     }
-    @AuraEnabled(cacheable=true)
-    public static Contact getSingleContact() {
-        return [
-            SELECT Id, Name, Title, Phone, Email
-            FROM Contact
-            WITH SECURITY_ENFORCED
-            LIMIT 1
-        ];
-    }
+    
 }

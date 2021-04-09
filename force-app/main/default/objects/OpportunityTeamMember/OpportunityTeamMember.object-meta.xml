@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
-        <actionName>Accept</actionName>
+        <actionName>AddAccountTeam</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Accept</actionName>
+        <actionName>AddAccountTeam</actionName>
         <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Accept</actionName>
+        <actionName>AddAccountTeam</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddDefaultTeam</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddDefaultTeam</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddDefaultTeam</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddOppTeam</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddOppTeam</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddOppTeam</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
@@ -57,44 +85,44 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Edit</actionName>
+        <actionName>DeleteTeam</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Edit</actionName>
+        <actionName>DeleteTeam</actionName>
         <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Edit</actionName>
+        <actionName>DeleteTeam</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>List</actionName>
+        <actionName>DisplayAccess</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>List</actionName>
+        <actionName>DisplayAccess</actionName>
         <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>List</actionName>
+        <actionName>DisplayAccess</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>New</actionName>
+        <actionName>Edit</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>New</actionName>
+        <actionName>Edit</actionName>
         <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>New</actionName>
+        <actionName>Edit</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
@@ -112,54 +140,6 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
-    <actionOverrides>
-        <actionName>Tab</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Tab</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>Tab</actionName>
-        <formFactor>Small</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Small</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <label>EventsCategories</label>
-    <nameField>
-        <label>EventsCategories Name</label>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>EventsCategories</pluralLabel>
-    <searchLayouts></searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
 </CustomObject>

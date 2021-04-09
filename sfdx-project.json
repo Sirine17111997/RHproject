@@ -13,6 +13,7 @@
     "sourceApiVersion": "51.0",
     "packageAliases": {
         "projectManager": "0Ho4L000000CaaaSAC",
-        "projectManager@0.1.0-1": "04t4L0000000esvQAA"
+        "projectManager@0.1.0-7": "04t4L0000000etjQAA",
+        "projectManager@0.1.0-8": "04t4L0000000etoQAA"
     }
 }

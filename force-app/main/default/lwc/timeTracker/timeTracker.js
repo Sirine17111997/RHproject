@@ -45,6 +45,7 @@ export default class TimeTracker extends LightningElement {
         TOAST_TITLE_STOPPED_SUCCESS: 'Recording successfully stopped. Time Entry submitted.',
         TOAST_TITLE_STOPPED_ERROR: 'TimeTracking_Toast_CanNotStopRecording',
         TOAST_TITLE_RECORDING_ABORTED: 'Recording aborted! Time Entry has been deleted.',
+        TOAST_TITLE_STOPPED: 'TimeTracking is stopped.',
         TOAST_TITLE_RECORDING_REQUIRED_FIELDS: 'Please fill all the time entry required fields.'
     }
 
@@ -55,7 +56,8 @@ export default class TimeTracker extends LightningElement {
     @track isLoading = true;
     @track isWorking = false;
     @track activeTimeEntryId;
-    @track currentTime = new Date().toISOString()
+    @track currentTime = new Date().toISOString();
+    @track isUpdating = false;
 
 
     @wire(getRecordCreateDefaults, { objectApiName: TIME_ENTRY_OBJECT })
@@ -131,6 +133,7 @@ export default class TimeTracker extends LightningElement {
         createRecord(newTimeEntry)
             .then((newRecord) => {
                 this.isRecording = true;
+                this.isUpdating = false;
                 this.isWorking = false;
                 this.dispatchToast('success', this.LABELS.TOAST_TITLE_STARTED_SUCCESS);
                 this.activeTimeEntry = newRecord;
@@ -143,7 +146,7 @@ export default class TimeTracker extends LightningElement {
             });
     }
 
-    stopRecording() {
+    submitRecording() {
         console.log("stop recording-*********");
         this.isWorking = true;
         let fieldsMap = new Map();
@@ -166,6 +169,24 @@ export default class TimeTracker extends LightningElement {
             });
     }
 
+
+    stopRecording() {
+        this.isWorking = true;
+        this.isUpdating = true;
+        deleteRecord(this.activeTimeEntryId)
+            .then(() => {
+                // this.dispatchToast('warning', this.TOAST_TITLE_STOPPED);
+                this.activeTimeEntryId = undefined;
+                this.activeTimeEntry = undefined;
+                this.isRecording = false;
+                this.isWorking = false;
+            })
+            .catch((error) => {
+                this.dispatchToast('error', this.LABELS.TOAST_TITLE_ERROR, reduceDMLErrors(error));
+                this.isWorking = false;
+            });
+    }
+
     deleteRecording() {
         this.isWorking = true;
         deleteRecord(this.activeTimeEntryId)
@@ -181,6 +202,32 @@ export default class TimeTracker extends LightningElement {
                 this.isWorking = false;
             });
     }
+
+    // stopRecord(){
+    //     // this.isWorking = true;
+    //     console.log("stop recording2222-*********");
+    //     this.isWorking = true;
+    //     let fieldsMap = new Map();
+    //     fieldsMap[TIME_ENTRY_ENDTIME_FIELD.fieldApiName] = this.currentTime.substr(0, 19)
+    //     fieldsMap[TIME_ENTRY_DESCRIPTION_FIELD.fieldApiName] = this.template.querySelector('[data-id="InputDescription__c"]').value
+    //     // fieldsMap[TIME_ENTRY_PROJECT_TEAM_MEMBER_FIELD.fieldApiName] = this.template.querySelector('[data-id="InputDescription__c"]').value
+    //     let updateTimeEntry = this.updateActiveTimeEntry(fieldsMap);
+    //     updateRecord(updateTimeEntry)
+    //         .then((updatedRecord) => {
+    //             this.dispatchToast('success', this.LABELS.TOAST_TITLE_STOPPED_SUCCESS);
+    //             this.updateActiveTimeEntry(updatedRecord);
+    //             this.isWorking = false;
+    //             this.isRecording = false;
+    //             this.clearInputs(
+    //                 this.template.querySelector('[data-id="InputProject_Task__c"]'),
+    //                 this.template.querySelector('[data-id="InputProject_Team_Member__c"]'))
+    //         }).catch((error) => {
+    //             this.dispatchToast('error', this.LABELS.TOAST_TITLE_STOPPED_ERROR, reduceDMLErrors(error));
+    //             this.isWorking = false;
+    //         });
+        
+
+    // }
 
     updateRecordLookup(event) {
         this.isWorking = true;
@@ -220,6 +267,10 @@ export default class TimeTracker extends LightningElement {
 
     get isFullyLoaded() {
         return this.isRecording && !this.isLoading;
+    }
+
+    get isFullyUpdated() {
+        return this.isUpdating && !this.isLoading;
     }
 
 
